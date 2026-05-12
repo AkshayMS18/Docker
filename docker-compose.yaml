@@ -1,0 +1,32 @@
+#to manage docker container for the project
+
+version: '3.9'
+
+services:
+ backend: 
+   build: ./backend
+   ports:
+     - "80:80"
+   depends_on:
+     - mongodb
+   environment:
+     - MONGODB_URI=mongodb://mangodb:27017/mydatabase
+     - SERVER_PORT=80
+   restart: always
+
+ frontend:
+    build: ./frontend
+    ports:
+     - "81:80"
+    restart: always
+
+ mangodb:
+    image: mongo:6
+    volumes:
+      - mangodb_data:/data/db
+    ports:
+      - "27017:27017"
+    restart: always
+
+volumes:
+  mangodb_data:
