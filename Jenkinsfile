@@ -15,7 +15,7 @@ pipeline {
         stage("building docker images"){
             steps {
                 echo "Building docker image using Dockerfile"
-                sh "docker build -t $IMAGE_NAME:latest ."
+                sh "docker build -t $IMAGE_NAME:$IMAGE_TAG ."
             }
         }
         stage("pushing docker image to dockerhub"){
