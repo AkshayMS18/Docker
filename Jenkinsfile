@@ -1,5 +1,10 @@
 pipeline {
     agent any
+
+    environment {
+        IMAGE_NAME = "microdegree"
+    }
+
     stages {
         stage('git checkout'){
             steps {
@@ -9,7 +14,7 @@ pipeline {
         stage("building docker images"){
             steps {
                 echo "Building docker image using Dockerfile"
-                sh "docker build -t microdegree:latest ."
+                sh "docker build -t $IMAGE_NAME:latest ."
             }
         }
         stage("pushing docker image to dockerhub"){
