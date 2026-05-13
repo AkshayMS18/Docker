@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = "microdegree"
+        IMAGE_TAG = "latest"
     }
 
     stages {
@@ -19,7 +20,11 @@ pipeline {
         }
         stage("pushing docker image to dockerhub"){
             steps{
-                echo "Pushing docker image to dockerhub"
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
+                    sh "echo $DOCKER_PASS | docker login -u $DOCKER_USER" --password-stdin"
+                    sh "docker tag $IMAGE_NAME:latest $DOCKER_USER/$IMAGE_NAME:$IMAGE_TAG"
+                    sh "docker push $DOCKER_USER/$IMAGE_NAME:$IMAGE_TAG"
+                }
             }
         }
         stage("Deploy Docker containers"){
