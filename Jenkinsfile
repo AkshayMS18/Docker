@@ -27,6 +27,7 @@ pipeline {
             //         docker push ${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG} '''
             //     }
             // }
+              echo "Building docker image using Dockerfile"
         }
         stage("Deploy Docker containers"){
             steps {
