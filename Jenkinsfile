@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent microdegree
 
     environment {
         IMAGE_NAME = "akshayms18/microdegree"
