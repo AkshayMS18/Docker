@@ -1,5 +1,9 @@
 pipeline {
-    agent label 'microdegree'
+    agent {
+        node{
+            label 'microdegree'
+        }
+    }
 
     environment {
         IMAGE_NAME = "akshayms18/microdegree"
