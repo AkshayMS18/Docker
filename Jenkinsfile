@@ -17,7 +17,7 @@ pipeline {
                 echo "Checking out code from gill repository"
             }
         }
-        stage("building docker images"){
+        stage("building docker imagess"){
             steps {
                 echo "Building docker image using Dockerfile"
                 sh "docker build -t $IMAGE_NAME:$IMAGE_TAG ."
