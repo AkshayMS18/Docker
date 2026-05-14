@@ -43,7 +43,7 @@ pipeline {
                     docker rm $CONTAINER_NAME || true
 
                     echo "Running Docker container on EC2 instance"
-                    docker run -d --name $CONTAINER_NAME -p $80:$8080 $IMAGE_NAME:$IMAGE_TAG
+                    docker run -d --name $CONTAINER_NAME -p 80:8080 $IMAGE_NAME:$IMAGE_TAG
                    '''
             }
         }
