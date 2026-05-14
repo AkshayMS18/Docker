@@ -40,7 +40,7 @@ pipeline {
                     docker pull $IMAGE_NAME:$IMAGE_TAG
 
                     docker stop $CONTAINER_NAME || true
-                    docker run $CONTAINER_NAME || true
+                    //docker run $CONTAINER_NAME || true
 
                     echo "Running Docker container on EC2 instance"
                     docker run -d --name $CONTAINER_NAME -p $80:$8080 $IMAGE_NAME:$IMAGE_TAG
