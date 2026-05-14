@@ -4,7 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = "akshayms18/microdegree"
         IMAGE_TAG = "latest"
-        CONTAINER_NAME = "microdegree-containerr"
+        CONTAINER_NAME = "microdegree-container"
     }
 
     stages {
